@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table in js</title>
+    <link rel="stylesheet" type="text/css" href="tableinjs.css">
+</head>
+
+<body>
+    <div id="container">
+        <label>Name:</label>
+        <input type="text" id="name" class="inpt"><br>
+        <label>Age:</label>
+        <input type="number" id="age" class="inpt"><br>
+        <label>Grade:</label>
+        <input type="text" id="grade" class="inpt"><br>
+        <button id="entry">Enter Data</button>
+        <table id="display" border="1" cellspacing="0">
+            <tr>
+                <th id="th1">Name</th>
+                <th id="th2">Age</th>
+                <th id="th3">Grade</th>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        let row = 1;
+        let entry = document.getElementById("entry");
+        entry.addEventListener("click", displayDetails);
+        entry.addEventListener("mouseout", removedata);
+
+
+        function displayDetails() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let grade = document.getElementById("grade").value;
+
+            if (!name || !age || !grade) {
+                alert("Kindly fill all details");
+                return;
+            }
+
+            let display = document.getElementById("display");
+            let newRow = display.insertRow(row);
+
+            let cell1 = newRow.insertCell(0);
+            let cell2 = newRow.insertCell(1);
+            let cell3 = newRow.insertCell(2);
+
+            cell1.innerHTML = name;
+            cell2.innerHTML = age;
+            cell3.innerHTML = grade;
+
+            row++;
+    }
+
+        function removedata() {
+            document.getElementById("name").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("grade").value = "";
+        }
+    </script>
+
+</body>
+
+</html>
